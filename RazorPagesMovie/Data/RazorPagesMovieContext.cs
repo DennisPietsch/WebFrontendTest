@@ -15,5 +15,7 @@ namespace RazorPagesMovie.Data
         }
 
         public DbSet<RazorPagesMovie.Models.Movie> Movie { get; set; }
+
+        public DbSet<RazorPagesMovie.Models.Movie> Fahrzeug { get; set; }
     }
 }

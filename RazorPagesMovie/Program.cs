@@ -38,4 +38,4 @@ namespace RazorPagesMovie
                     webBuilder.UseStartup<Startup>();
                 });
     }
-}
+}  
