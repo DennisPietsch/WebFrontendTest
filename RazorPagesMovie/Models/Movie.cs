@@ -21,15 +21,22 @@ namespace RazorPagesMovie.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Preis { get; set; }
 
+        [RegularExpression(@"(0-9)")]
+        [Range(0, 9)]
         public int SitzPlaetze { get; set; }
 
+        [RegularExpression(@"(0-9)")]
+        [Range(0, 3)]
         public int Raeder { get; set; }
-        
+
+        [RegularExpression(@"(0-9)")]
+        [Range(0, 1000)]
         public int Leistung { get; set; }
-        
+
+        [RegularExpression(@"(0-9)")]
         public int Bauhjahr { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z ]*$")]
+        [RegularExpression(@"^[a-zA-Z ]*$")]
         [Required]
         [StringLength(30)]
         public string kundenname { get; set; }

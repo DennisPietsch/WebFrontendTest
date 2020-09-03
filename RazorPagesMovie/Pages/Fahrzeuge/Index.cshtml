@@ -1,5 +1,5 @@
 ﻿@page
-@model RazorPagesMovie.Pages.Movies.IndexModel
+@model RazorPagesMovie.Pages.Fahrzeuge.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,31 +14,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Hersteller)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Hersteller)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Preis)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Preis)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].SitzPlaetze)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].SitzPlaetze)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Raeder)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Raeder)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Leistung)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Leistung)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Bauhjahr)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Bauhjahr)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].kundenname)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].kundenname)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+@foreach (var item in Model.Fahrzeug) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Hersteller)

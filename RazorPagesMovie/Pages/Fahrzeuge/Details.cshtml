@@ -1,0 +1,61 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Fahrzeug</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.Hersteller)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.Hersteller)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.Preis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.Preis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.SitzPlaetze)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.SitzPlaetze)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.Raeder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.Raeder)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.Leistung)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.Leistung)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.Bauhjahr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.Bauhjahr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fahrzeug.kundenname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fahrzeug.kundenname)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Fahrzeug.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
