@@ -23,40 +23,48 @@ namespace RazorPagesMovie.Models
                 context.Movie.AddRange(
                     new Movie
                     {
-                        Title = "When Harry Met Sally",
-                        ReleaseDate = DateTime.Parse("1989-2-12"),
-                        Genre = "Romantic Comedy",
-                        Price = 7.99M,
-                        Rating = "R"
+                        Hersteller = "Audi",
+                        Bauhjahr = 2018,
+                        Leistung = 210,
+                        Preis = 12.50M,
+                        SitzPlaetze = 5,
+                        Raeder = 4,
+                        kundenname = ""
                     },
 
                     new Movie
                     {
-                        Title = "Ghostbusters ",
-                        ReleaseDate = DateTime.Parse("1984-3-13"),
-                        Genre = "Comedy",
-                        Price = 8.99M,
-                        Rating = "A"
+                        Hersteller = "VW",
+                        Bauhjahr = 2009,
+                        Leistung = 150,
+                        Preis = 7.50M,
+                        SitzPlaetze = 5,
+                        Raeder = 4,
+                        kundenname = ""
                     },
 
                     new Movie
                     {
-                        Title = "Ghostbusters 2",
-                        ReleaseDate = DateTime.Parse("1986-2-23"),
-                        Genre = "Comedy",
-                        Price = 9.99M,
-                        Rating = "R"
+                        Hersteller = "Mercedes Benz",
+                        Bauhjahr = 2019,
+                        Leistung = 300,
+                        Preis = 16.50M,
+                        SitzPlaetze = 5,
+                        Raeder = 4,
+                        kundenname = ""
                     },
 
                     new Movie
                     {
-                        Title = "Rio Bravo",
-                        ReleaseDate = DateTime.Parse("1959-4-15"),
-                        Genre = "Western",
-                        Price = 3.99M,
-                        Rating = "S"
+                        Hersteller = "Toyota",
+                        Bauhjahr = 2005,
+                        Leistung = 120,
+                        Preis = 5,
+                        SitzPlaetze = 5,
+                        Raeder = 4,
+                        kundenname = ""
                     }
-                ); ;
+                ) ; ;
                 context.SaveChanges();
             }
         }
