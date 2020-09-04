@@ -1,0 +1,70 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.LKWs.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LKW</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Hersteller)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Hersteller)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Preis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Preis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.SitzPlaetze)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.SitzPlaetze)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Raeder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Raeder)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Leistung)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Leistung)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Bauhjahr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Bauhjahr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.kundenname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.kundenname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LKW.Ladevolumen)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LKW.Ladevolumen)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="LKW.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.LKWs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LKW</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LKW.ID" />
+            <div class="form-group">
+                <label asp-for="LKW.Hersteller" class="control-label"></label>
+                <input asp-for="LKW.Hersteller" class="form-control" />
+                <span asp-validation-for="LKW.Hersteller" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.Preis" class="control-label"></label>
+                <input asp-for="LKW.Preis" class="form-control" />
+                <span asp-validation-for="LKW.Preis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.SitzPlaetze" class="control-label"></label>
+                <input asp-for="LKW.SitzPlaetze" class="form-control" />
+                <span asp-validation-for="LKW.SitzPlaetze" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.Raeder" class="control-label"></label>
+                <input asp-for="LKW.Raeder" class="form-control" />
+                <span asp-validation-for="LKW.Raeder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.Leistung" class="control-label"></label>
+                <input asp-for="LKW.Leistung" class="form-control" />
+                <span asp-validation-for="LKW.Leistung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.Bauhjahr" class="control-label"></label>
+                <input asp-for="LKW.Bauhjahr" class="form-control" />
+                <span asp-validation-for="LKW.Bauhjahr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.kundenname" class="control-label"></label>
+                <input asp-for="LKW.kundenname" class="form-control" />
+                <span asp-validation-for="LKW.kundenname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LKW.Ladevolumen" class="control-label"></label>
+                <input asp-for="LKW.Ladevolumen" class="form-control" />
+                <span asp-validation-for="LKW.Ladevolumen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

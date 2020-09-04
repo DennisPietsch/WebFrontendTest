@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Fahrzeuge\" />
-    <Folder Include="Pages\Kunden\" />
   </ItemGroup>
 
 </Project>

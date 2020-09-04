@@ -8,21 +8,23 @@ namespace RazorPagesMovie.Models
 {
     public class Kunde
     {
-        [RegularExpression(@"a-zA-Z")]
+        public int ID { get;set; }
+
+        [RegularExpression(@"^[A-Za-z]*$")]
         [Required]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
-        [RegularExpression(@"a-zA-Z")]
+        [RegularExpression(@"^[A-Za-z]*$")]
         [Required]
         [StringLength(50, MinimumLength = 3)]
-        public string VorName { get; set; }
+        public string Vorname { get; set; }
 
         [Range (18, 1000)]
         [Required]
-        public int alter { get; set; }
+        public int Alter { get; set; }
 
-        [RegularExpression(@"a-zA-Z ")]
+        [RegularExpression(@"^[A-Za-z]*$")]
         [Required]
         public string Stadt { get; set; }
     }

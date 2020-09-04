@@ -1,0 +1,64 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.Motorräder.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Motorrad</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Motorrad.Hersteller" class="control-label"></label>
+                <input asp-for="Motorrad.Hersteller" class="form-control" />
+                <span asp-validation-for="Motorrad.Hersteller" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.Preis" class="control-label"></label>
+                <input asp-for="Motorrad.Preis" class="form-control" />
+                <span asp-validation-for="Motorrad.Preis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.SitzPlaetze" class="control-label"></label>
+                <input asp-for="Motorrad.SitzPlaetze" class="form-control" />
+                <span asp-validation-for="Motorrad.SitzPlaetze" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.Raeder" class="control-label"></label>
+                <input asp-for="Motorrad.Raeder" class="form-control" />
+                <span asp-validation-for="Motorrad.Raeder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.Leistung" class="control-label"></label>
+                <input asp-for="Motorrad.Leistung" class="form-control" />
+                <span asp-validation-for="Motorrad.Leistung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.Bauhjahr" class="control-label"></label>
+                <input asp-for="Motorrad.Bauhjahr" class="form-control" />
+                <span asp-validation-for="Motorrad.Bauhjahr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motorrad.kundenname" class="control-label"></label>
+                <input asp-for="Motorrad.kundenname" class="form-control" />
+                <span asp-validation-for="Motorrad.kundenname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
