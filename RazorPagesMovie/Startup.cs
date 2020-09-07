@@ -38,6 +38,7 @@ namespace RazorPagesMovie
             {
                 app.UseDeveloperExceptionPage();
             }
+
             else
             {
                 app.UseExceptionHandler("/Error");

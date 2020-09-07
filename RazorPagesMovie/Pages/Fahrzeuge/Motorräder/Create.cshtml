@@ -43,10 +43,10 @@
                 <input asp-for="Motorrad.Bauhjahr" class="form-control" />
                 <span asp-validation-for="Motorrad.Bauhjahr" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Motorrad.kundenname" class="control-label"></label>
-                <input asp-for="Motorrad.kundenname" class="form-control" />
-                <span asp-validation-for="Motorrad.kundenname" class="text-danger"></span>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Motorrad.seitenWagen" /> @Html.DisplayNameFor(model => model.Motorrad.seitenWagen)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

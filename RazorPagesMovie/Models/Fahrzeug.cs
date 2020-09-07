@@ -34,5 +34,7 @@ namespace RazorPagesMovie.Models
         public string kundenname { get; set; }
 
         public bool verfuegbar { get; set; }
+
+        public int ausleihzeit { get; set; }
     }
 }
