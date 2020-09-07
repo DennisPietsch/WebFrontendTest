@@ -32,5 +32,7 @@ namespace RazorPagesMovie.Models
         [Required]
         [StringLength(30)]
         public string kundenname { get; set; }
+
+        public bool verfuegbar { get; set; }
     }
 }

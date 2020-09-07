@@ -14,10 +14,6 @@ namespace RazorPagesMovie.Data
         {
         }
 
-        public DbSet<RazorPagesMovie.Models.Movie> Movie { get; set; }
-
-        public DbSet<RazorPagesMovie.Models.Movie> Fahrzeug { get; set; }
-
         public DbSet<RazorPagesMovie.Models.Fahrzeug> Fahrzeug_1 { get; set; }
 
         public DbSet<RazorPagesMovie.Models.Kunde> Kunde { get; set; }

@@ -18,46 +18,6 @@ namespace RazorPagesMovie.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RazorPagesMovie.Models.Auto", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Anhängerkupplung")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Bauhjahr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Hersteller")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
-
-                    b.Property<int>("Leistung")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Preis")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("Raeder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SitzPlaetze")
-                        .HasColumnType("int");
-
-                    b.Property<string>("kundenname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Auto");
-                });
-
             modelBuilder.Entity("RazorPagesMovie.Models.Fahrzeug", b =>
                 {
                     b.Property<int>("ID")
@@ -67,6 +27,10 @@ namespace RazorPagesMovie.Migrations
 
                     b.Property<int>("Bauhjahr")
                         .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hersteller")
                         .IsRequired()
@@ -93,6 +57,8 @@ namespace RazorPagesMovie.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Fahrzeug_1");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Fahrzeug");
                 });
 
             modelBuilder.Entity("RazorPagesMovie.Models.Kunde", b =>
@@ -122,83 +88,6 @@ namespace RazorPagesMovie.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Kunde");
-                });
-
-            modelBuilder.Entity("RazorPagesMovie.Models.LKW", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Bauhjahr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Hersteller")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
-
-                    b.Property<decimal>("Ladevolumen")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Leistung")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Preis")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("Raeder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SitzPlaetze")
-                        .HasColumnType("int");
-
-                    b.Property<string>("kundenname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("LKW");
-                });
-
-            modelBuilder.Entity("RazorPagesMovie.Models.Motorrad", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Bauhjahr")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Hersteller")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
-
-                    b.Property<int>("Leistung")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Preis")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("Raeder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SitzPlaetze")
-                        .HasColumnType("int");
-
-                    b.Property<string>("kundenname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Motorrad");
                 });
 
             modelBuilder.Entity("RazorPagesMovie.Models.Movie", b =>
@@ -236,6 +125,36 @@ namespace RazorPagesMovie.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("RazorPagesMovie.Models.Auto", b =>
+                {
+                    b.HasBaseType("RazorPagesMovie.Models.Fahrzeug");
+
+                    b.Property<bool>("Anhängerkupplung")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Auto");
+                });
+
+            modelBuilder.Entity("RazorPagesMovie.Models.LKW", b =>
+                {
+                    b.HasBaseType("RazorPagesMovie.Models.Fahrzeug");
+
+                    b.Property<decimal>("Ladevolumen")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("LKW");
+                });
+
+            modelBuilder.Entity("RazorPagesMovie.Models.Motorrad", b =>
+                {
+                    b.HasBaseType("RazorPagesMovie.Models.Fahrzeug");
+
+                    b.Property<bool>("seitenWagen")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Motorrad");
                 });
 #pragma warning restore 612, 618
         }
