@@ -9,6 +9,6 @@ namespace RazorPagesMovie.Models
 {
     public class Motorrad : Fahrzeug
     {
-        public bool seitenWagen { get; set; }
+        public bool SeitenWagen { get; set; }
     }
 }

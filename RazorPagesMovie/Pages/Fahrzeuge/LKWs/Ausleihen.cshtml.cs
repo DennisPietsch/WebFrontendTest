@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
@@ -17,13 +18,26 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            else
+            {
+                ID = (int)id;
+            }
+
             return Page();
         }
 
-        [BindProperty]
         public LKW LKW { get; set; }
+        [BindProperty]
+        public int ID { get; set; }
+        [BindProperty]
+        public int Ausleihzeit { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -34,8 +48,10 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
                 return Page();
             }
 
-            LKW.verfuegbar = false;
-            LKW.kundenname = "TestKunde";
+            LKW = await _context.LKW.FirstOrDefaultAsync(m => m.ID == ID);
+
+            LKW.Verfuegbar = false;
+            LKW.Kundenname = "TestKunde";
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

@@ -41,7 +41,7 @@
                 @Html.DisplayNameFor(model => model.Fahrzeug[0].Bauhjahr)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fahrzeug[0].kundenname)
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Kundenname)
             </th>
             <th></th>
         </tr>
@@ -69,7 +69,7 @@
                     @Html.DisplayFor(modelItem => item.Bauhjahr)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.kundenname)
+                    @Html.DisplayFor(modelItem => item.Kundenname)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

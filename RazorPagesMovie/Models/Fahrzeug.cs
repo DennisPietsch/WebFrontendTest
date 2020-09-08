@@ -12,7 +12,7 @@ namespace RazorPagesMovie.Models
         public int ID { get; set; }
 
         [StringLength(60, MinimumLength = 2)]
-        //[Required]
+        [Required]
         public string Hersteller { get; set; }
 
         [Range(1, 100)]
@@ -28,13 +28,13 @@ namespace RazorPagesMovie.Models
 
         public int Bauhjahr { get; set; }
 
-        /*[RegularExpression(@"^[A-Z]+[a-zA-Z ]*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z ]*$")]
         [Required]
-        [StringLength(30)]*/
-        public string kundenname { get; set; }
+        [StringLength(30)]
+        public string Kundenname { get; set; }
 
-        public bool verfuegbar { get; set; }
+        public bool Verfuegbar { get; set; }
 
-        public int ausleihzeit { get; set; }
+        public int Ausleihzeit { get; set; }
     }
 }

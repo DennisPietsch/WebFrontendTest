@@ -1,6 +1,7 @@
 ﻿@page
 @model RazorPagesMovie.Pages.Fahrzeuge.Autos.AusleihenModel
 @{
+    ViewData["Title"] = "Ausleihen";
 }
 
 <h1>Test</h1>
@@ -10,9 +11,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Auto.ausleihzeit" class="control-label"></label>
-                <input asp-for="Auto.ausleihzeit" class="form-control" />
-                <span asp-validation-for="Auto.ausleihzeit" class="text-danger"></span>
+                <label asp-for="Ausleihzeit" class="control-label"></label>
+                <input asp-for="Ausleihzeit" class="form-control" />
+                <span asp-validation-for="Ausleihzeit" class="text-danger"></span>
+                <label hidden asp-for="ID" class="control-label"></label>
             </div>
 
             <div class="form-group">

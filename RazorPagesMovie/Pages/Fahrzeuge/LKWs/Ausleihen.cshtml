@@ -11,14 +11,16 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="LKW.ausleihzeit" class="control-label"></label>
-                <input asp-for="LKW.ausleihzeit" class="form-control" />
-                <span asp-validation-for="LKW.ausleihzeit" class="text-danger"></span>
+                <label asp-for="LKW.Ausleihzeit" class="control-label"></label>
+                <input asp-for="LKW.Ausleihzeit" class="form-control" />
+                <span asp-validation-for="LKW.Ausleihzeit" class="text-danger"></span>
+                <label hidden asp-for="ID" class="control-label"></label>
             </div>
+
+            <div class="form-group">
+                <input type="submit" value="Ausleihen" class="btn btn-primary" />
+            </div>
+
         </form>
     </div>
 </div>
-<div class="form-group">
-    <input type="submit" value="Ausleihen" class="btn btn-primary" />
-</div>
-

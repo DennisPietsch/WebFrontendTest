@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesMovie.Data;
 
 namespace RazorPagesMovie.Migrations
 {
     [DbContext(typeof(RazorPagesMovieContext))]
-    partial class RazorPagesMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20200908083643_testing7")]
+    partial class testing7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace RazorPagesMovie.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Ausleihzeit")
-                        .HasColumnType("int");
-
                     b.Property<int>("Bauhjahr")
                         .HasColumnType("int");
 
@@ -36,14 +35,8 @@ namespace RazorPagesMovie.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hersteller")
-                        .IsRequired()
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
-
-                    b.Property<string>("Kundenname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
 
                     b.Property<int>("Leistung")
                         .HasColumnType("int");
@@ -57,7 +50,13 @@ namespace RazorPagesMovie.Migrations
                     b.Property<int>("SitzPlaetze")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Verfuegbar")
+                    b.Property<int>("ausleihzeit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("kundenname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("verfuegbar")
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
@@ -77,25 +76,19 @@ namespace RazorPagesMovie.Migrations
                     b.Property<int>("Alter")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Stadt")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vorname")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("ID");
 
@@ -126,7 +119,7 @@ namespace RazorPagesMovie.Migrations
                 {
                     b.HasBaseType("RazorPagesMovie.Models.Fahrzeug");
 
-                    b.Property<bool>("SeitenWagen")
+                    b.Property<bool>("seitenWagen")
                         .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("Motorrad");

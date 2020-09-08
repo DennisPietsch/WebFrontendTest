@@ -36,7 +36,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
                 return Page();
             }
 
-            LKW.verfuegbar = true;
+            LKW.Verfuegbar = true;
             _context.LKW.Add(LKW);
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");

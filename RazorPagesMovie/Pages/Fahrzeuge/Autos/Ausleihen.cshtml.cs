@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesMovie.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
@@ -17,13 +18,28 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            else
+            {
+                ID = (int)id;
+            }
+
             return Page();
         }
 
-        [BindProperty]
         public Auto Auto { get; set; }
+
+        [BindProperty]
+        public int ID { get; set; }
+        [BindProperty]
+        public int Ausleihzeit { get; set; }
+
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -34,8 +50,10 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
                 return Page();
             }
 
-            Auto.verfuegbar = false;
-            Auto.kundenname = "TestKunde";
+            Auto = await _context.Auto.FirstOrDefaultAsync(m => m.ID == ID);
+
+            Auto.Verfuegbar = false;
+            Auto.Kundenname = "TestKunde";
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

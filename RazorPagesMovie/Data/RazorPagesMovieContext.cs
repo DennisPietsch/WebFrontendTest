@@ -12,7 +12,7 @@ namespace RazorPagesMovie.Data
         public RazorPagesMovieContext (DbContextOptions<RazorPagesMovieContext> options)
             : base(options)
         {
-        }
+        } 
 
         public DbSet<RazorPagesMovie.Models.Fahrzeug> Fahrzeug_1 { get; set; }
 
