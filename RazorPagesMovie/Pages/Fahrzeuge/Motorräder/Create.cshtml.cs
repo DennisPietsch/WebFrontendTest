@@ -36,9 +36,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
                 return Page();
             }
 
+            Motorrad.verfuegbar = true;
             _context.Motorrad.Add(Motorrad);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

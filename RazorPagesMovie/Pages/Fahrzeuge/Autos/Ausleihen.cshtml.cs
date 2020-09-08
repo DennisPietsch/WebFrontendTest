@@ -8,11 +8,11 @@ using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
-    public class Ausleihen : PageModel
+    public class AusleihenModel : PageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
 
-        public Ausleihen(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public AusleihenModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
         {
             _context = context;
         }
@@ -35,7 +35,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
             }
 
             Auto.verfuegbar = false;
-
+            Auto.kundenname = "TestKunde";
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

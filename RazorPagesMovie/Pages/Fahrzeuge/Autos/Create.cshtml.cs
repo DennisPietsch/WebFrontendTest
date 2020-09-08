@@ -36,9 +36,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
                 return Page();
             }
 
+            Auto.verfuegbar = true;
             _context.Auto.Add(Auto);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

@@ -32,6 +32,9 @@
                 @Html.DisplayNameFor(model => model.LKW[0].Bauhjahr)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.LKW[0].verfuegbar)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.LKW[0].kundenname)
             </th>
             <th>
@@ -60,6 +63,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Bauhjahr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.verfuegbar)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.kundenname)

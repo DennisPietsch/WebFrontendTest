@@ -1,5 +1,5 @@
 ﻿@page
-@model RazorPagesMovie.Pages.Fahrzeuge.Autos.Ausleihen
+@model RazorPagesMovie.Pages.Fahrzeuge.Autos.AusleihenModel
 @{
 }
 
@@ -14,9 +14,11 @@
                 <input asp-for="Auto.ausleihzeit" class="form-control" />
                 <span asp-validation-for="Auto.ausleihzeit" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <input type="submit" value="Ausleihen" class="btn btn-primary" />
+            </div>
+
         </form>
     </div>
-</div>
-<div class="form-group">
-    <input type="submit" value="Ausleihen" class="btn btn-primary" />
 </div>
