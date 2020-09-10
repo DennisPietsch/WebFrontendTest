@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesMovie.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
@@ -53,7 +54,8 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
             Auto = await _context.Auto.FirstOrDefaultAsync(m => m.ID == ID);
 
             Auto.Verfuegbar = false;
-            Auto.Kundenname = "TestKunde";
+
+            Auto.Kundenname = User.ToString();
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
