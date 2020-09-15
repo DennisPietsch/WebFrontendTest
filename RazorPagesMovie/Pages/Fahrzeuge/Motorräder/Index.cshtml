@@ -59,7 +59,12 @@
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>|
-                <a asp-page="./Ausleihen" asp-route-id="@item.ID">Ausleihen</a>
+
+                @if (item.Verfuegbar == true)
+                {
+                    <a asp-page="./Ausleihen" asp-route-id="@item.ID">Ausleihen</a>
+                }
+
             </td>
         </tr>
 }

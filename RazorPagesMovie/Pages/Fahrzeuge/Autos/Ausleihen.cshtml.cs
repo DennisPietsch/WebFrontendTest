@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesMovie.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
+    [Authorize]
     public class AusleihenModel : PageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
@@ -40,22 +42,23 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
         public int ID { get; set; }
         [BindProperty]
         public int Ausleihzeit { get; set; }
-
-
+ 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return Page(); 
             }
 
             Auto = await _context.Auto.FirstOrDefaultAsync(m => m.ID == ID);
 
             Auto.Verfuegbar = false;
+            Auto.AusgeliehenUM = DateTime.Now;
+            Auto.Ausleihzeit = Ausleihzeit;
+            Auto.Kundenname = User.Identity.Name;
 
-            Auto.Kundenname = User.ToString();
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

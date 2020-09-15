@@ -29,12 +29,13 @@ namespace RazorPagesMovie.Models
         public int Bauhjahr { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z ]*$")]
-        [Required]
         [StringLength(30)]
         public string Kundenname { get; set; }
 
         public bool Verfuegbar { get; set; }
 
         public int Ausleihzeit { get; set; }
+
+        public DateTime AusgeliehenUM { get; set; }
     }
 }

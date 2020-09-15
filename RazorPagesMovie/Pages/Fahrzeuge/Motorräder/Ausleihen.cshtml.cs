@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
 {
+    [Authorize]
     public class AusleihenModel : PageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
@@ -51,7 +53,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
             Motorrad = await _context.Motorrad.FirstOrDefaultAsync(m => m.ID == ID);
 
             Motorrad.Verfuegbar = false;
-            Motorrad.Kundenname = "TestKunde";
+            Motorrad.Kundenname = User.Identity.Name;
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
