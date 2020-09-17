@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,15 @@ namespace RazorPagesMovie
                 try
                 {
                     SeedData.Initialize(services);
+
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    context.Database.Migrate();
+
+                    var config = host.Services.GetRequiredService<IConfiguration>();
+
+                    var testUserPW = config["SeedUserPW"];
+
+                    SeedData.Initialize(services, testUserPW).Wait();
                 }
                 catch (Exception ex)
                 {

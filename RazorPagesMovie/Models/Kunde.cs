@@ -41,5 +41,17 @@ namespace RazorPagesMovie.Models
         [Compare("Password",
             ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        // user ID from AspNetUser table.
+        public string OwnerID { get; set; }
+
+        public ContactStatus Status { get; set; }
+    }
+
+    public enum ContactStatus
+    {
+        Submitted,
+        Approved,
+        Rejected
     }
 }
