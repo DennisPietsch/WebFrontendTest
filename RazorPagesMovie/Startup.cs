@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesMovie.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using RazorPagesMovie.Authorization;
 
 namespace RazorPagesMovie
 {

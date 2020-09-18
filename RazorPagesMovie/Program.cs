@@ -5,6 +5,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RazorPagesMovie.Models;
 using System;
+using RazorPagesMovie;
+using RazorPagesMovie.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorPagesMovie
 {
@@ -22,14 +25,13 @@ namespace RazorPagesMovie
                 {
                     SeedData.Initialize(services);
 
-                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    var context = services.GetRequiredService<RazorPagesMovieContext>();
                     context.Database.Migrate();
 
                     var config = host.Services.GetRequiredService<IConfiguration>();
 
                     var testUserPW = config["SeedUserPW"];
 
-                    SeedData.Initialize(services, testUserPW).Wait();
                 }
                 catch (Exception ex)
                 {

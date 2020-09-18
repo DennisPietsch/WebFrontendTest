@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
+    [AllowAnonymous]
     public class IndexModel : PageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
