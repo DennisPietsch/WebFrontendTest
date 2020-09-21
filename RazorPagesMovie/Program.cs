@@ -23,8 +23,6 @@ namespace RazorPagesMovie
 
                 try
                 {
-                    SeedData.Initialize(services);
-
                     var context = services.GetRequiredService<RazorPagesMovieContext>();
                     context.Database.Migrate();
 
@@ -32,6 +30,7 @@ namespace RazorPagesMovie
 
                     var testUserPW = config["SeedUserPW"];
 
+                    SeedData.Initialize(services, testUserPW);
                 }
                 catch (Exception ex)
                 {

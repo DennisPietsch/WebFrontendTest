@@ -1,8 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20200921072056_newMig.cs" />
+    <Compile Include="Migrations\20200921072056_newMig.Designer.cs" />
+    <Compile Include="Migrations\RazorPagesMovieContextModelSnapshot.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Pages\Fahrzeuge\Autos\Create.cshtml.cs" />
