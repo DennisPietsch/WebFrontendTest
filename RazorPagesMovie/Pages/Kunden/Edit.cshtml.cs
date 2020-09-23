@@ -2,76 +2,99 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesMovie.Authorization;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Kunden
 {
-    public class EditModel : PageModel
+    public class EditModel : DI_BasePageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
-
-        public EditModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public EditModel(
+            RazorPagesMovieContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         [BindProperty]
         public Kunde Kunde { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Kunde = await _context.Kunde.FirstOrDefaultAsync(m => m.ID == id);
+            Kunde = await Context.Kunde.FirstOrDefaultAsync(
+                                            m => m.ID == id);
 
             if (Kunde == null)
             {
                 return NotFound();
             }
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                        User, Kunde,
+                                                        ContactOperations.Update);
+
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Kunde).State = EntityState.Modified;
+            var contact = await Context
+                .Kunde.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            try
+            if (contact == null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KundeExists(Kunde.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
-        }
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                    User, contact,
+                                                    ContactOperations.Update);
 
-        private bool KundeExists(int id)
-        {
-            return _context.Kunde.Any(e => e.ID == id);
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
+            Kunde.OwnerID = contact.OwnerID;
+
+            Context.Attach(Kunde).State = EntityState.Modified;
+
+            if (Kunde.Status == ContactStatus.Approved)
+            {
+                var canApprove = await AuthorizationService.AuthorizeAsync(User,
+                                        Kunde,
+                                        ContactOperations.Approve);
+
+                if (!canApprove.Succeeded)
+                {
+                    Kunde.Status = ContactStatus.Submitted;
+                }
+
+                await Context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+
+            return NotFound();
         }
     }
 }

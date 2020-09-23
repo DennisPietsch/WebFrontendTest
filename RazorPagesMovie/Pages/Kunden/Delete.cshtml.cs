@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesMovie.Authorization;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Kunden
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : DI_BasePageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
 
-        public DeleteModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public DeleteModel(
+            RazorPagesMovieContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         [BindProperty]
@@ -24,34 +30,48 @@ namespace RazorPagesMovie.Pages.Kunden
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Kunde = await _context.Kunde.FirstOrDefaultAsync(m => m.ID == id);
+            Kunde = await Context.Kunde.FirstOrDefaultAsync(
+                                            m => m.ID == id);
 
             if (Kunde == null)
             {
                 return NotFound();
             }
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                        User, Kunde,
+                                                        ContactOperations.Delete);
+
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
+            var contact = await Context
+                .Kunde.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (Kunde == null)
             {
                 return NotFound();
             }
 
-            Kunde = await _context.Kunde.FindAsync(id);
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                    User, Kunde,
+                                                    ContactOperations.Delete);
 
-            if (Kunde != null)
+            if (!isAuthorized.Succeeded)
             {
-                _context.Kunde.Remove(Kunde);
-                await _context.SaveChangesAsync();
+                return Forbid();
             }
+
+            Context.Kunde.Remove(contact);
+            await Context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

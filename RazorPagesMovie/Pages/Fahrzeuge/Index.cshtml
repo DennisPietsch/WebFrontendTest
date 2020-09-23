@@ -5,13 +5,17 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+</head>
+
     <center><h1>Index</h1></center>
 
-<form method="get" action="/Fahrzeuge/Autos/Index">
+<form method="get" action="/Fahrzeuge/Autos/Index" style="color:green">
     <input type="submit" value="Autos">
 </form>
 
-<form method="get" action="/Fahrzeuge/LKWs/Index">
+<form method="get" action="/Fahrzeuge/LKWs/Index"> 
     <input type="submit" value="LKWs">
 </form>
 
@@ -78,5 +82,5 @@
                 </td>
             </tr>
         }
-    </tbody>
+    </tbody>                                         
 </table>-->

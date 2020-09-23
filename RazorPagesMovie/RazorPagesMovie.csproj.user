@@ -13,5 +13,6 @@
     <RazorPage_SelectedScaffolderID>Microsoft.WebTools.Scaffolding.Core.ModelBasedCrudRazorPageScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/RazorPage</RazorPage_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_LayoutPageFile />
+    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
 </Project>
