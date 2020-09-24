@@ -11,7 +11,7 @@ namespace RazorPagesMovie.Models
 {
     public static class SeedData
     {
-        public static async void Initialize(IServiceProvider serviceProvider, string testUserPw)
+        public static async Task Initialize(IServiceProvider serviceProvider, string testUserPw)
         {
             using (var context = new RazorPagesMovieContext(
                 serviceProvider.GetRequiredService<

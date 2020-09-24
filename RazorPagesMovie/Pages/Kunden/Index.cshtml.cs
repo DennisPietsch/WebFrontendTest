@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
 using RazorPagesMovie.Authorization;
@@ -31,6 +32,8 @@ namespace RazorPagesMovie.Pages.Kunden
 
         public async Task OnGetAsync()
         {
+            var userName = User.Identity.Name;
+
             var contacts = from c in Context.Kunde
                            select c;
 

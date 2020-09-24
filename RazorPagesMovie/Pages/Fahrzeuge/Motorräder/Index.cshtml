@@ -56,12 +56,13 @@
                 @Html.DisplayFor(modelItem => item.Kundenname)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>|
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
 
-                @if (item.Verfuegbar == true)
+                @if (item.Verfuegbar == true && User.Identity.Name != null)
                 {
+                    <text> | </text>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> <text> | </text>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> <text> | </text>
                     <a asp-page="./Ausleihen" asp-route-id="@item.ID">Ausleihen</a>
                 }
 

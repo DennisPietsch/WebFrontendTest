@@ -23,14 +23,14 @@ namespace RazorPagesMovie
 
                 try
                 {
-                    var context = services.GetRequiredService<RazorPagesMovieContext>();
+                    var context = services.GetRequiredService<RazorPagesMovieContext>();                                    
                     context.Database.Migrate();
 
                     var config = host.Services.GetRequiredService<IConfiguration>();
 
                     var testUserPW = config["SeedUserPW"];
 
-                    SeedData.Initialize(services, testUserPW);
+                    SeedData.Initialize(services, testUserPW).Wait();
                 }
                 catch (Exception ex)
                 {
@@ -38,8 +38,6 @@ namespace RazorPagesMovie
                     logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
-
-            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
