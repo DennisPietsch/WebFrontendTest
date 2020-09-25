@@ -29,6 +29,7 @@ namespace RazorPagesMovie.Pages.Kunden
         }
 
         public IList<Kunde> Kunde { get;set; }
+        public IList<IdentityUser> UserList { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -47,6 +48,10 @@ namespace RazorPagesMovie.Pages.Kunden
                 contacts = contacts.Where(c => c.Status == ContactStatus.Approved
                                             || c.OwnerID == currentUserId);
             }
+
+            var users = await Context.Users.ToListAsync();
+
+            UserList = users;
 
             Kunde = await contacts.ToListAsync();
         }

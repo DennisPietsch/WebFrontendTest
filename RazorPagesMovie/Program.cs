@@ -8,6 +8,7 @@ using System;
 using RazorPagesMovie;
 using RazorPagesMovie.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace RazorPagesMovie
 {
@@ -38,6 +39,7 @@ namespace RazorPagesMovie
                     logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
