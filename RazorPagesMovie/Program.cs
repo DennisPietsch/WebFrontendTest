@@ -24,7 +24,7 @@ namespace RazorPagesMovie
 
                 try
                 {
-                    var context = services.GetRequiredService<RazorPagesMovieContext>();                                    
+                    var context = services.GetRequiredService<AuthenticationContext>();                                    
                     context.Database.Migrate();
 
                     var config = host.Services.GetRequiredService<IConfiguration>();

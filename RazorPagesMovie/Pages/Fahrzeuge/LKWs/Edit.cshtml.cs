@@ -13,9 +13,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 {
     public class EditModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
-        public EditModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public EditModel(RazorPagesMovie.Models.AuthenticationContext context)
         {
             _context = context;
         }

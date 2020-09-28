@@ -15,10 +15,10 @@ namespace RazorPagesMovie.Pages.Kunden
 {
     public class DeleteModel : DI_BasePageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
         public DeleteModel(
-            RazorPagesMovieContext context,
+            AuthenticationContext context,
             IAuthorizationService authorizationService,
             UserManager<IdentityUser> userManager)
             : base(context, authorizationService, userManager)

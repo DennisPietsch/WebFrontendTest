@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesMovie.Data;
+using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Migrations
 {
-    [DbContext(typeof(RazorPagesMovieContext))]
+    [DbContext(typeof(AuthenticationContext))]
     [Migration("20200921072056_newMig")]
     partial class newMig
     {

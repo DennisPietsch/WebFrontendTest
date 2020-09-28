@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using RazorPagesMovie.Data;
+using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages
 {
     public class DI_BasePageModel : PageModel
     {
-        protected RazorPagesMovieContext Context { get; }
+        protected AuthenticationContext Context { get; }
         protected IAuthorizationService AuthorizationService { get; }
         protected UserManager<IdentityUser> UserManager { get; }
 
         public DI_BasePageModel(
-            RazorPagesMovieContext context,
+            AuthenticationContext context,
             IAuthorizationService authorizationService,
             UserManager<IdentityUser> userManager) : base()
         {

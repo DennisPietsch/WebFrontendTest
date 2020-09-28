@@ -13,9 +13,9 @@ namespace RazorPagesMovie.Models
     {
         public static async Task Initialize(IServiceProvider serviceProvider, string testUserPw)
         {
-            using (var context = new RazorPagesMovieContext(
+            using (var context = new AuthenticationContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<RazorPagesMovieContext>>()))
+                    DbContextOptions<AuthenticationContext>>()))
             {
                 var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@contoso.com");
                 await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);

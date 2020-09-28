@@ -12,9 +12,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
 {
     public class IndexModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
-        public IndexModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public IndexModel(RazorPagesMovie.Models.AuthenticationContext context)
         {
             _context = context;
         }

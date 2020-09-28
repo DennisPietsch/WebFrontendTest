@@ -17,7 +17,7 @@ namespace RazorPagesMovie.Pages.Kunden
     public class EditModel : DI_BasePageModel
     {
         public EditModel(
-            RazorPagesMovieContext context,
+            AuthenticationContext context,
             IAuthorizationService authorizationService,
             UserManager<IdentityUser> userManager)
             : base(context, authorizationService, userManager)

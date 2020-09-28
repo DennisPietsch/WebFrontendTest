@@ -15,9 +15,6 @@ namespace RazorPagesMovie.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AuthenticationContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthenticationContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthenticationContext>();

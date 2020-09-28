@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using RazorPagesMovie.Authorization;
 using Microsoft.AspNetCore.Authentication;
+using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie
 {
@@ -31,7 +32,7 @@ namespace RazorPagesMovie
         {
             services.AddRazorPages();
 
-            services.AddDbContext<RazorPagesMovieContext>(options =>
+            services.AddDbContext<AuthenticationContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext")));
 
             services.AddAuthorization(options =>

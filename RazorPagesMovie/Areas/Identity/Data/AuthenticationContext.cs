@@ -22,5 +22,15 @@ namespace RazorPagesMovie.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<RazorPagesMovie.Models.Fahrzeug> Fahrzeug_1 { get; set; }
+
+        public DbSet<RazorPagesMovie.Models.Kunde> Kunde { get; set; }
+
+        public DbSet<RazorPagesMovie.Models.Auto> Auto { get; set; }
+
+        public DbSet<RazorPagesMovie.Models.LKW> LKW { get; set; }
+
+        public DbSet<RazorPagesMovie.Models.Motorrad> Motorrad { get; set; }
     }
 }

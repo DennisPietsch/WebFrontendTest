@@ -12,9 +12,9 @@ namespace RazorPagesMovie.Pages.Kunden
 {
     public class CreateModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
-        public CreateModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public CreateModel(RazorPagesMovie.Models.AuthenticationContext context)
         {
             _context = context;
         }

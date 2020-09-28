@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesMovie.Data;
+using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Migrations
 {
-    [DbContext(typeof(RazorPagesMovieContext))]
+    [DbContext(typeof(AuthenticationContext))]
     partial class RazorPagesMovieContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

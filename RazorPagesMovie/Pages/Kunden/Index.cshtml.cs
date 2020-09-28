@@ -21,7 +21,7 @@ namespace RazorPagesMovie.Pages.Kunden
     public class IndexModel : DI_BasePageModel
     {
         public IndexModel(
-            RazorPagesMovieContext context,
+            AuthenticationContext context,
             IAuthorizationService authorizationService,
             UserManager<IdentityUser> userManager)
             : base(context, authorizationService, userManager)
@@ -33,8 +33,6 @@ namespace RazorPagesMovie.Pages.Kunden
 
         public async Task OnGetAsync()
         {
-            var userName = User.Identity.Name;
-
             var contacts = from c in Context.Kunde
                            select c;
 

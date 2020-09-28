@@ -12,9 +12,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 {
     public class DeleteModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
-        public DeleteModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public DeleteModel(RazorPagesMovie.Models.AuthenticationContext context)
         {
             _context = context;
         }

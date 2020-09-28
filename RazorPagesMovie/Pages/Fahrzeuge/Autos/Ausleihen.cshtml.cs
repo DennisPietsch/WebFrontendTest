@@ -14,9 +14,9 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
     [Authorize]
     public class AusleihenModel : PageModel
     {
-        private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
 
-        public AusleihenModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
+        public AusleihenModel(RazorPagesMovie.Models.AuthenticationContext context)
         {
             _context = context;
         }
