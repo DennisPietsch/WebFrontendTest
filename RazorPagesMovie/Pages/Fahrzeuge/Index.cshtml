@@ -5,19 +5,25 @@
     ViewData["Title"] = "Index";
 }
 
-<center><h1>Index</h1></center>
+<center><h1>Fahrzeugauswahl</h1></center>
 
-<form method="get" action="/Fahrzeuge/Autos/Index">
-    <input type="submit" value="Autos">
-</form>
-
-<form method="get" action="/Fahrzeuge/LKWs/Index">
-    <input type="submit" value="LKWs">
-</form>
-
-<form method="get" action="/Fahrzeuge/Motorräder/Index">
-    <input type="submit" value="Motorräder">
-</form>
+<div class="row" style="margin-top:40px;">
+    <div class="col-md-4">
+        <form method="get" action="/Fahrzeuge/Autos/Index">
+            <input type="submit" value="Autos">
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form method="get" action="/Fahrzeuge/LKWs/Index">
+            <input type="submit" value="LKWs">
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form method="get" action="/Fahrzeuge/Motorräder/Index">
+            <input type="submit" value="Motorräder">
+        </form>
+    </div>
+</div>
 
 <!--<table class="table">
     <thead>
