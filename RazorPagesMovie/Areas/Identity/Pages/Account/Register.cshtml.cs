@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -51,7 +52,6 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -67,8 +67,9 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
+            [EmailAddress]
             [StringLength(30, ErrorMessage = "Name zu lang")]
-            [Display(Name = "Name")]
+            //[Display(Name = "Name")]
             public string Name { get; set; }
         }
 
@@ -96,7 +97,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Name, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Name, Email = Input.Email};  
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

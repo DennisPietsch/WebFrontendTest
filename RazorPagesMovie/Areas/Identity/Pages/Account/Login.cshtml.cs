@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Security.Policy;
 
 namespace RazorPagesMovie.Areas.Identity.Pages.Account
 {
@@ -42,6 +43,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            
             [Required]
             [EmailAddress]
             public string Email { get; set; }
@@ -79,6 +81,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
