@@ -49,6 +49,8 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public IList<IdentityUser> UserList { get; set; }
 
+        public IList<Kunde> RazorPageKunden { get; set; }
+
         public class InputModel
         {
             [Required]
@@ -71,6 +73,9 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             [StringLength(30, ErrorMessage = "Name zu lang")]
             //[Display(Name = "Name")]
             public string Name { get; set; }
+
+            [Display(Name = "Standort / Stadt")]
+            public string Standort { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -97,7 +102,8 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Name, Email = Input.Email};  
+                var user = new IdentityUser { UserName = Input.Name, Email = Input.Email };
+                var kunde = new Kunde { Stadt = Input.Standort, Name = Input.Name, Email = Input.Email, Password = Input.Password };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
