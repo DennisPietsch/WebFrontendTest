@@ -14,6 +14,10 @@
   <ItemGroup>
     <Compile Include="Migrations\20200921072056_newMig.cs" />
     <Compile Include="Migrations\20200921072056_newMig.Designer.cs" />
+    <Compile Include="Migrations\20201007082910_kundeRazorPagesave.cs" />
+    <Compile Include="Migrations\20201007082910_kundeRazorPagesave.Designer.cs" />
+    <Compile Include="Migrations\20201007125313_pwdelete.cs" />
+    <Compile Include="Migrations\20201007125313_pwdelete.Designer.cs" />
     <Compile Include="Migrations\RazorPagesMovieContextModelSnapshot.cs" />
   </ItemGroup>
 

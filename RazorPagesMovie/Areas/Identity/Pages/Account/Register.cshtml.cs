@@ -103,8 +103,11 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Name, Email = Input.Email };
-                var kunde = new Kunde { Stadt = Input.Standort, Name = Input.Name, Email = Input.Email, Password = Input.Password };
+
+                _context.Kunde.Add(new Kunde { Stadt = Input.Standort, Email = Input.Email });
+                    
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

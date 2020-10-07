@@ -29,12 +29,12 @@ namespace RazorPagesMovie.Data
             return View();
         }
         [HttpPost]
-        public async Task <IActionResult> RegisterViewModel(Kunde model)
+        public async Task <IActionResult> RegisterViewModel(IdentityUser model)
         {
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user, model.Password);
+                var result = await userManager.CreateAsync(user, model.PasswordHash);
 
                 if (result.Succeeded)
                 {

@@ -17,22 +17,26 @@
             <th>
                 @Html.DisplayNameFor(model => model.Kunde[0].Email)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kunde[0].Stadt)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.UserList)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-    </tr>
-        }
-    </tbody>
-    <tbody>
+    @foreach (var user in Model.Kunde)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => user.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Stadt)
+            </td>
+        </tr>
+    }
     </tbody>
 </table>

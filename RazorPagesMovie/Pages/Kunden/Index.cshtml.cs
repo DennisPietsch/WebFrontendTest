@@ -52,6 +52,17 @@ namespace RazorPagesMovie.Pages.Kunden
             UserList = users;
 
             Kunde = await contacts.ToListAsync();
+
+            foreach (var user in UserList)
+            {
+                foreach (var item in Kunde)
+                {
+                    if (user.Email == item.Email)
+                    {
+                        user.UserName = item.Name;
+                    }
+                }
+            }
         }
     }
 }
