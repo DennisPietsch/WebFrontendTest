@@ -90,18 +90,6 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            /*var users = await _context.Users.ToListAsync();
-
-            UserList = users;
-
-            foreach (var user in UserList)
-            {
-                if (user.Email == Input.Email)
-                {
-                    RedirectToPage("Account/Error");
-                }
-            }*/
-
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)

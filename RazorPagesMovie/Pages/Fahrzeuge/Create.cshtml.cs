@@ -36,7 +36,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
                 return Page();
             }
 
-            _context.Fahrzeug_1.Add(Fahrzeug);
+            _context.Fahrzeug.Add(Fahrzeug);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

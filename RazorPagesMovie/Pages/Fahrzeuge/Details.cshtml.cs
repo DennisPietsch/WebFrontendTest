@@ -28,7 +28,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
                 return NotFound();
             }
 
-            Fahrzeug = await _context.Fahrzeug_1.FirstOrDefaultAsync(m => m.ID == id);
+            Fahrzeug = await _context.Fahrzeug.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Fahrzeug == null)
             {

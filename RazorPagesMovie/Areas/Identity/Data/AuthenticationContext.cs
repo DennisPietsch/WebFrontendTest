@@ -23,7 +23,7 @@ namespace RazorPagesMovie.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<RazorPagesMovie.Models.Fahrzeug> Fahrzeug_1 { get; set; }
+        public DbSet<RazorPagesMovie.Models.Fahrzeug> Fahrzeug { get; set; }
 
         public DbSet<RazorPagesMovie.Models.Kunde> Kunde { get; set; }
 

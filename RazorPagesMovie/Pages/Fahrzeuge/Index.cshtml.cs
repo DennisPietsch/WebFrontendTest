@@ -25,7 +25,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
 
         public async Task OnGetAsync()
         {
-            Fahrzeug = await _context.Fahrzeug_1.ToListAsync();
+            Fahrzeug = await _context.Fahrzeug.ToListAsync();
         }
     }
 }

@@ -17,6 +17,17 @@ namespace RazorPagesMovie.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<AuthenticationContext>>()))
             {
+                context.Fahrzeug.AddRange(
+                    new Auto
+                    {
+                        Hersteller = "Audi",
+                        Preis = 3.90m,
+                        SitzPlaetze = 5,
+                        Raeder = 4,
+                        Anhängerkupplung = true,
+                        Leistung = 200,
+                        Bauhjahr = 2019
+                    });                
                 var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@contoso.com");
                 await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
 

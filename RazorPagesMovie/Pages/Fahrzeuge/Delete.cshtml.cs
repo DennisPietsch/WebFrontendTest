@@ -29,7 +29,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
                 return NotFound();
             }
 
-            Fahrzeug = await _context.Fahrzeug_1.FirstOrDefaultAsync(m => m.ID == id);
+            Fahrzeug = await _context.Fahrzeug.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Fahrzeug == null)
             {
@@ -45,11 +45,11 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
                 return NotFound();
             }
 
-            Fahrzeug = await _context.Fahrzeug_1.FindAsync(id);
+            Fahrzeug = await _context.Fahrzeug.FindAsync(id);
 
             if (Fahrzeug != null)
             {
-                _context.Fahrzeug_1.Remove(Fahrzeug);
+                _context.Fahrzeug.Remove(Fahrzeug);
                 await _context.SaveChangesAsync();
             }
 
