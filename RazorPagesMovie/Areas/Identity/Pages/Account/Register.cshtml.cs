@@ -54,6 +54,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -69,10 +70,13 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [EmailAddress]
-            [StringLength(30, ErrorMessage = "Name zu lang")]
-            //[Display(Name = "Name")]
+            [StringLength(30, ErrorMessage = "Invalid input")]
+            [Display(Name = "Name")]
             public string Name { get; set; }
+
+            [StringLength(30, ErrorMessage = "Invalid input")]
+            [Display(Name = "Vorname")]
+            public string Vorname { get; set; }
 
             [Display(Name = "Standort / Stadt")]
             public string Standort { get; set; }
@@ -102,9 +106,9 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Name, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
 
-                _context.Kunde.Add(new Kunde { Stadt = Input.Standort, Email = Input.Email });
+                _context.Kunde.Add(new Kunde { Stadt = Input.Standort, Email = Input.Email, Vorname = Input.Vorname, Name = Input.Name });
                     
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 
@@ -128,8 +132,8 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
+                        await _signInManager.SignInAsync(user, isPersistent: false); 
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }
