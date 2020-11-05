@@ -93,6 +93,8 @@ namespace RazorPagesMovie.Models
                     });
 
                 context.Fahrzeug.AddRange(Fahrzeugliste);
+
+                context.SaveChanges();
             }
 
                 var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@contoso.com");
