@@ -47,7 +47,7 @@ namespace RazorPagesMovie.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Fahrzeug_1",
+                name: "Fahrzeug",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -69,7 +69,7 @@ namespace RazorPagesMovie.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fahrzeug_1", x => x.ID);
+                    table.PrimaryKey("PK_Fahrzeug", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -257,7 +257,7 @@ namespace RazorPagesMovie.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Fahrzeug_1");
+                name: "Fahrzeug");
 
             migrationBuilder.DropTable(
                 name: "Kunde");

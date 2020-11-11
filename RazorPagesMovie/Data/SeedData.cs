@@ -12,7 +12,7 @@ namespace RazorPagesMovie.Models
 {
     public static class SeedData
     {
-        public static async Task Initialize(IServiceProvider serviceProvider, string testUserPw)
+        public static async Task Initialize(IServiceProvider serviceProvider)
         {
             List<Fahrzeug> Fahrzeugliste = new List<Fahrzeug>();
 
@@ -20,6 +20,11 @@ namespace RazorPagesMovie.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<AuthenticationContext>>()))
             {
+                if (context.Fahrzeug.Any())
+                {
+                    return;
+                }
+
                 Fahrzeugliste.Add(
                     new Auto
                     {
@@ -47,13 +52,13 @@ namespace RazorPagesMovie.Models
                 Fahrzeugliste.Add(
                     new Auto
                     {
-                        Hersteller = "VW",
-                        Preis = 2.30m,
+                        Hersteller = "Skdoa",
+                        Preis = 3.10m,
                         SitzPlaetze = 5,
                         Raeder = 4,
                         Anhängerkupplung = false,
-                        Leistung = 150,
-                        Bauhjahr = 2017
+                        Leistung = 170,
+                        Bauhjahr = 2018
                     });
 
                 Fahrzeugliste.Add(
@@ -81,14 +86,13 @@ namespace RazorPagesMovie.Models
                     });
 
                 Fahrzeugliste.Add(
-                    new Auto
+                    new LKW
                     {
-                        Hersteller = "Audi",
-                        Preis = 3.90m,
-                        SitzPlaetze = 5,
+                        Hersteller = "Scania",
+                        Preis = 6.50m,
+                        SitzPlaetze = 2,
                         Raeder = 4,
-                        Anhängerkupplung = true,
-                        Leistung = 200,
+                        Leistung = 450,
                         Bauhjahr = 2019
                     });
 
@@ -96,13 +100,6 @@ namespace RazorPagesMovie.Models
 
                 context.SaveChanges();
             }
-
-                var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@contoso.com");
-                await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
-
-                // allowed user can create and edit contacts that they create
-                var managerID = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
-                await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
         }
 
         private static async Task<string> EnsureUser(IServiceProvider serviceProvider,

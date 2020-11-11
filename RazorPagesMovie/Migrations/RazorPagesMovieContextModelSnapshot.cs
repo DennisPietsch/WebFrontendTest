@@ -265,7 +265,7 @@ namespace RazorPagesMovie.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Fahrzeug_1");
+                    b.ToTable("Fahrzeug");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Fahrzeug");
                 });

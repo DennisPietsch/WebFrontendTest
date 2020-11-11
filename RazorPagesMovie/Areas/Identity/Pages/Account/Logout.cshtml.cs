@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Sinks.File;
 
 namespace RazorPagesMovie.Areas.Identity.Pages.Account
 {
@@ -28,10 +30,19 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+            var logoutlogger = Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File("C:/Users/DennisP/Desktop/logoutlogger.txt")
+                .CreateLogger();
+
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+
+            logoutlogger.Information("User {0} logged out", User);
+
             if (returnUrl != null)
             {
+                logoutlogger.Information("User {0} logged out", User);
                 return LocalRedirect(returnUrl);
             }
             else

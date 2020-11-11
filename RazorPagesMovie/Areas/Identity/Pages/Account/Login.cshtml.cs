@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Security.Policy;
+using Serilog;
+using Serilog.Sinks.File;
 
 namespace RazorPagesMovie.Areas.Identity.Pages.Account
 {
@@ -75,6 +77,11 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            var logginglogger = Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File("C:/Users/DennisP/Desktop/logginglogger.txt")
+                .CreateLogger();
+
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
@@ -86,6 +93,9 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    logginglogger.Information("User Logged in with Identity Module {0}.", Input.Email);
+                    
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
