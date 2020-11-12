@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 using Serilog;
 using Serilog.Sinks.File;
+using Serilog.Events;
 
 namespace RazorPagesMovie
 {
@@ -18,13 +19,14 @@ namespace RazorPagesMovie
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-
             Log.Logger = new LoggerConfiguration()
                         .MinimumLevel.Debug()
-                        .WriteTo.Console()
+                        .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                        .Enrich.FromLogContext()
                         .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
                         .CreateLogger();
+
+            var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
             {
@@ -39,7 +41,7 @@ namespace RazorPagesMovie
 
                     SeedData.Initialize(services).Wait();
 
-                    Log.Information("Database is initialized");
+                    Log.Information("Starting Web Host");
                 }
                 catch (Exception ex)
                 {
@@ -49,7 +51,7 @@ namespace RazorPagesMovie
                         .WriteTo.Console()
                         .CreateLogger();
 
-                    log.Information("Hello, Serilog!");
+                    log.Information("Hello, Serilog!");fdasfsadfasdfsadfasdfadsfasdf
 
                     Log.Logger = log;
                     Log.Information("The global logger has been configurated");
@@ -66,6 +68,7 @@ namespace RazorPagesMovie
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureLogging(loggerinfo =>
                 {
                     loggerinfo.ClearProviders();
@@ -74,8 +77,6 @@ namespace RazorPagesMovie
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-
-                    
                 });
     }
 }  

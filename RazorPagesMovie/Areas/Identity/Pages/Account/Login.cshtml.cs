@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using System.Security.Policy;
 using Serilog;
 using Serilog.Sinks.File;
+using System.Linq.Expressions;
+using Serilog.Events;
 
 namespace RazorPagesMovie.Areas.Identity.Pages.Account
 {
@@ -77,9 +79,9 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            var logginglogger = Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.File("C:/Users/DennisP/Desktop/logginglogger.txt")
+                .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
                 .CreateLogger();
 
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -89,24 +91,29 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
 
+                _logger.LogInformation("Nutzer hat sich angemeldet");
+
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("User {0} logged in.", Input.Email);
 
-                    logginglogger.Information("User Logged in with Identity Module {0}.", Input.Email);
+                    //Log.Information("User Logged in with Identity Module {0}.", Input.Email);
                     
                     return LocalRedirect(returnUrl);
                 }
+                
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
+
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }
+
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");

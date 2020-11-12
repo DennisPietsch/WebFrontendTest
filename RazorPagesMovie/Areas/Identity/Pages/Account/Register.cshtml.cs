@@ -110,6 +110,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    _logger.LogDebug("New User Name was set to {0} and email {1}", Input.Name, Input.Email);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -124,12 +125,13 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        Log.Information("New User is Registered {UserName}", Input.Name);
+                        _logger.LogDebug("Neuer Nutzer hat sich registriert: Name: {0}, Email {1}, Standort {2}", Input.Name, Input.Email, Input.Standort);
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
-                    else
-                        await _signInManager.SignInAsync(user, isPersistent: false); 
+
+                    else 
                     {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }

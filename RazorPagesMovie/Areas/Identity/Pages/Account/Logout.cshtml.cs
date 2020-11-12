@@ -30,23 +30,22 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
-            var logoutlogger = Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.File("C:/Users/DennisP/Desktop/logoutlogger.txt")
+                .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
                 .CreateLogger();
 
             await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
-
-            logoutlogger.Information("User {0} logged out", User);
+            _logger.LogInformation("User logged out");
 
             if (returnUrl != null)
             {
-                logoutlogger.Information("User {0} logged out", User);
+                _logger.LogInformation("User logged out test 2");
                 return LocalRedirect(returnUrl);
             }
             else
             {
+                _logger.LogError("Error occured with log out");
                 return RedirectToPage();
             }
         }
