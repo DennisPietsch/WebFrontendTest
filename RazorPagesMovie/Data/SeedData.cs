@@ -93,7 +93,8 @@ namespace RazorPagesMovie.Models
                         SitzPlaetze = 2,
                         Raeder = 4,
                         Leistung = 450,
-                        Bauhjahr = 2019
+                        Bauhjahr = 2019,
+                        Verfuegbar = true
                     });
 
                 context.Fahrzeug.AddRange(Fahrzeugliste);

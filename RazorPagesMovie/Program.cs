@@ -10,7 +10,6 @@ using RazorPagesMovie.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 using Serilog;
-using Serilog.Sinks.File;
 using Serilog.Events;
 
 namespace RazorPagesMovie
@@ -20,11 +19,11 @@ namespace RazorPagesMovie
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                        .MinimumLevel.Debug()
-                        .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                        .Enrich.FromLogContext()
-                        .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
-                        .CreateLogger();
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
+                .Enrich.FromLogContext()
+                .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
 
@@ -55,7 +54,6 @@ namespace RazorPagesMovie
 
                     Log.Logger = log;
                     Log.Information("The global logger has been configurated");
-                    
                     
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");

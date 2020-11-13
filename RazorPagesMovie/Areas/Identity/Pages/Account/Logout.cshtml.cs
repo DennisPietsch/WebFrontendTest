@@ -18,6 +18,8 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
 
+        public string Username;
+
         public LogoutModel(SignInManager<IdentityUser> signInManager, ILogger<LogoutModel> logger)
         {
             _signInManager = signInManager;
@@ -26,26 +28,22 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public void OnGet()
         {
+            Username = User.Identity.Name;
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
-                .CreateLogger();
-
             await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out");
-
+            
             if (returnUrl != null)
             {
-                _logger.LogInformation("User logged out test 2");
+                _logger.LogInformation("User {0} logged out", Username);
                 return LocalRedirect(returnUrl);
             }
+
             else
             {
-                _logger.LogError("Error occured with log out");
+                _logger.LogError("User {0} logged out", Username);
                 return RedirectToPage();
             }
         }

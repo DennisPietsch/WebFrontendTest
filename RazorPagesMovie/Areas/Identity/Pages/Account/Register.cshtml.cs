@@ -92,11 +92,6 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File("C:/Users/DennisP/Desktop/logger.txt")
-                .CreateLogger();
-
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
@@ -109,8 +104,8 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
                 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
-                    _logger.LogDebug("New User Name was set to {0} and email {1}", Input.Name, Input.Email);
+                    /*_logger.LogInformation("User created a new account with password.");
+                    _logger.LogDebug("New User Name was set to {0} and email {1}", Input.Name, Input.Email);*/
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

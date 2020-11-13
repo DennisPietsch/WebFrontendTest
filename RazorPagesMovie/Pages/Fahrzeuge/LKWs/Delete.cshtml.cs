@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 {
+    [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
+        private readonly ILogger<DeleteModel> _logger;
+        private readonly AuthenticationContext _context;
 
-        public DeleteModel(RazorPagesMovie.Models.AuthenticationContext context)
+        public DeleteModel(
+            ILogger<DeleteModel> logger,
+            AuthenticationContext context
+            )
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -26,6 +34,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
         {
             if (id == null)
             {
+                _logger.LogError("LKW is not found and can be deleted");
                 return NotFound();
             }
 
@@ -33,6 +42,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 
             if (LKW == null)
             {
+                _logger.LogError("LKW is not found and can be deleted");
                 return NotFound();
             }
             return Page();
@@ -42,6 +52,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
         {
             if (id == null)
             {
+                _logger.LogError("LKW is not found and can be deleted");
                 return NotFound();
             }
 
@@ -51,6 +62,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
             {
                 _context.LKW.Remove(LKW);
                 await _context.SaveChangesAsync();
+                _logger.LogDebug("LKW is Deleted by User {0}", User.Identity.Name);
             }
 
             return RedirectToPage("./Index");

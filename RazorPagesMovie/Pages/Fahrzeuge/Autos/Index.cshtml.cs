@@ -10,23 +10,40 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
+using RazorPagesMovie.Areas;
+using Microsoft.Extensions.Logging;
 
 namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 {
     [AllowAnonymous]
     public class IndexModel : PageModel
     {
-        private readonly RazorPagesMovie.Models.AuthenticationContext _context;
+        private readonly ILogger<IndexModel> _logger;
+        private readonly AuthenticationContext _context;
 
-        public IndexModel(RazorPagesMovie.Models.AuthenticationContext context)
+        public IndexModel(
+            ILogger<IndexModel> logger,
+            AuthenticationContext context
+            )
         {
             _context = context;
+            _logger = logger;
         }
 
         public IList<Auto> Auto { get;set; }
 
         public async Task OnGetAsync()
         {
+            if (User.Identity.Name == null)
+            {
+                _logger.LogInformation("Not logged in User is on Auto Verleih Index");
+            }
+
+            else
+            {
+                _logger.LogInformation("{0} is on Auto Verleih Index", User.Identity.Name);
+            }
+
             Auto = await _context.Auto.ToListAsync();
 
             foreach (var fahrzeug in Auto)
