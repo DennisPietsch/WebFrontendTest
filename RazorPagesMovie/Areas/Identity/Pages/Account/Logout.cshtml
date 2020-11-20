@@ -1,0 +1,16 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<script>
+    setTimeout(function () {
+        window.location = "https://localhost:44330/Index";
+    }, 2000)
+</script>
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    <p>Sie sind nun abgemeldet.</p>
+</header>

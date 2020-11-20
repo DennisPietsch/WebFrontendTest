@@ -1,0 +1,2 @@
+2020-11-11 10:53:29.529 +01:00 [INF] Database is initialized
+2020-11-11 10:54:35.539 +01:00 [INF] Database is initialized

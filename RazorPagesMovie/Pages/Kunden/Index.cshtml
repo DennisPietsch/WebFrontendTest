@@ -1,0 +1,48 @@
+﻿@page
+@model RazorPagesMovie.Pages.Kunden.IndexModel
+@using Microsoft.AspNetCore.Identity;
+@using RazorPagesMovie.Models;
+ 
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kunde[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kunde[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kunde[0].Vorname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kunde[0].Stadt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model.Kunde)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => user.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Vorname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Stadt)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

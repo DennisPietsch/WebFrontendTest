@@ -1,0 +1,88 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<center><h1>Fahrzeugauswahl</h1></center>
+
+<div class="row" style="margin-top:40px;">
+    <div class="col-md-2">
+        <form method="get" action="/Fahrzeuge/Autos/Index">
+            <input type="submit" value="Autos">
+        </form>
+    </div>
+    <div class="col-md-2">
+        <form method="get" action="/Fahrzeuge/LKWs/Index">
+            <input type="submit" value="LKWs">
+        </form>
+    </div>
+    <div class="col-md-2">
+        <form method="get" action="/Fahrzeuge/Motorräder/Index">
+            <input type="submit" value="Motorräder">
+        </form>
+    </div>
+</div>
+
+<!--<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Hersteller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Preis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].SitzPlaetze)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Raeder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Leistung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Bauhjahr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fahrzeug[0].Kundenname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fahrzeug)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hersteller)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SitzPlaetze)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Raeder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Leistung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bauhjahr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kundenname)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>-->

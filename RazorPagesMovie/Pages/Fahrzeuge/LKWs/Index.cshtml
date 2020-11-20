@@ -1,0 +1,79 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.LKWs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>LKW's</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Hersteller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Preis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Leistung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Bauhjahr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Verfuegbar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Kundenname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LKW[0].Ladevolumen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.LKW) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hersteller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leistung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bauhjahr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verfuegbar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kundenname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ladevolumen)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+
+                @if (item.Verfuegbar == true && User.Identity.Name != null)
+                {
+                    <text> | </text>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> <text> | </text>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> <text> | </text>
+                    <a asp-page="./Ausleihen" asp-route-id="@item.ID">Ausleihen</a>
+                }
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

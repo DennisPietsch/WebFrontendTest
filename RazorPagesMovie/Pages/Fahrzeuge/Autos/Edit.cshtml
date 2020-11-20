@@ -1,0 +1,65 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.Autos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Auto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Auto.ID" />
+            <div class="form-group">
+                <label asp-for="Auto.Hersteller" class="control-label"></label>
+                <input asp-for="Auto.Hersteller" class="form-control" />
+                <span asp-validation-for="Auto.Hersteller" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auto.Preis" class="control-label"></label>
+                <input asp-for="Auto.Preis" class="form-control" />
+                <span asp-validation-for="Auto.Preis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auto.SitzPlaetze" class="control-label"></label>
+                <input asp-for="Auto.SitzPlaetze" class="form-control" />
+                <span asp-validation-for="Auto.SitzPlaetze" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auto.Raeder" class="control-label"></label>
+                <input asp-for="Auto.Raeder" class="form-control" />
+                <span asp-validation-for="Auto.Raeder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auto.Leistung" class="control-label"></label>
+                <input asp-for="Auto.Leistung" class="form-control" />
+                <span asp-validation-for="Auto.Leistung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auto.Bauhjahr" class="control-label"></label>
+                <input asp-for="Auto.Bauhjahr" class="form-control" />
+                <span asp-validation-for="Auto.Bauhjahr" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Auto.Anhängerkupplung" /> @Html.DisplayNameFor(model => model.Auto.Anhängerkupplung)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
