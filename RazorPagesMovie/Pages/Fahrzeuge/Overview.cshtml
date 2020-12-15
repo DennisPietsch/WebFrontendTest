@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPagesMovie.Pages.Fahrzeuge.OverviewModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Hersteller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Preis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Leistung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Bauhjahr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model.fahrzeugliste)
+         {
+            @if (item.Verfuegbar != true)
+             {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hersteller)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leistung)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bauhjahr)
+                    </td>
+                </tr>
+             }
+         }
+
+    </tbody>
+</table>
