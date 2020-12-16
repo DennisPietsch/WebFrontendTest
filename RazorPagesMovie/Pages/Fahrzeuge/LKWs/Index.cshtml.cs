@@ -49,6 +49,8 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
                 {
                     fahrzeug.Verfuegbar = true;
                     fahrzeug.Kundenname = null;
+
+                    await _context.SaveChangesAsync();
                 }
             }
         }

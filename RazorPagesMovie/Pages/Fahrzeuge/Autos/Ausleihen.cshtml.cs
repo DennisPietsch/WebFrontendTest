@@ -56,6 +56,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 
             Auto.Verfuegbar = false;
             Auto.AusgeliehenUM = DateTime.Now;
+            Auto.AusleihenBIS = Auto.AusgeliehenUM.AddMinutes(Auto.Ausleihzeit);
             Auto.Ausleihzeit = Ausleihzeit;
             Auto.Kundenname = User.Identity.Name;
 

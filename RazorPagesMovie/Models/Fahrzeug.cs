@@ -37,5 +37,7 @@ namespace RazorPagesMovie.Models
         public int Ausleihzeit { get; set; }
 
         public DateTime AusgeliehenUM { get; set; }
+
+        public DateTime AusleihenBIS { get; set; }
     }
 }

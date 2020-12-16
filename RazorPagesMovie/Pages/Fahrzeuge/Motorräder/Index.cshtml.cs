@@ -49,6 +49,8 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
                 {
                     fahrzeug.Verfuegbar = true;
                     fahrzeug.Kundenname = null;
+
+                    await _context.SaveChangesAsync();
                 }
             }
         }

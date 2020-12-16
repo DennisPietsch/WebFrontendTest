@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesMovie.Models;
 
 namespace RazorPagesMovie.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    partial class RazorPagesMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20201215134003_Ausleihen")]
+    partial class Ausleihen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,14 +228,11 @@ namespace RazorPagesMovie.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("AusgeliehenBIS")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("AusgeliehenUM")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Ausleihzeit")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Ausleihzeit")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Bauhjahr")
                         .HasColumnType("int");

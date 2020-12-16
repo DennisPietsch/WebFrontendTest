@@ -48,10 +48,17 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 
             foreach (var fahrzeug in Auto)
             {
+                if (fahrzeug.Verfuegbar == false)
+                {
+
+                }
+
                 if (fahrzeug.AusgeliehenUM.AddMinutes(fahrzeug.Ausleihzeit) <= DateTime.Now)
                 {
                     fahrzeug.Verfuegbar = true;
                     fahrzeug.Kundenname = null;
+
+                    await _context.SaveChangesAsync();
                 }
             }
         }

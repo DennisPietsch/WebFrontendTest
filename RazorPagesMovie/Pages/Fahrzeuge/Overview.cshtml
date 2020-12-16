@@ -26,9 +26,12 @@
 
         @foreach (var item in Model.fahrzeugliste)
          {
-            @if (item.Verfuegbar != true)
+            @if (item.Verfuegbar == false)
              {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Hersteller)
                     </td>
@@ -36,10 +39,10 @@
                         @Html.DisplayFor(modelItem => item.Preis)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Leistung)
+                        @Html.DisplayFor(modelItem => item.Kundenname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Bauhjahr)
+                        @Html.DisplayFor(modelItem => item.AusleihenBIS)
                     </td>
                 </tr>
              }
