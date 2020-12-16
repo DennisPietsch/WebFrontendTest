@@ -39,7 +39,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
         [BindProperty]
         public int ID { get; set; }
         [BindProperty]
-        public int Ausleihzeit { get; set; }
+        public DateTime AusleihenBIS { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -52,8 +52,12 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 
             LKW = await _context.LKW.FirstOrDefaultAsync(m => m.ID == ID);
 
+            LKW.AusgeliehenBIS = AusleihenBIS;
+
             LKW.Verfuegbar = false;
+            LKW.AusgeliehenUM = DateTime.Now;
             LKW.Kundenname = User.Identity.Name;
+
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

@@ -39,7 +39,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
         [BindProperty]
         public int ID { get; set; }
         [BindProperty]
-        public int Ausleihzeit { get; set; }
+        public DateTime AusleihenBIS { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -51,9 +51,13 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Motorräder
             }
 
             Motorrad = await _context.Motorrad.FirstOrDefaultAsync(m => m.ID == ID);
-
+            
+            Motorrad.AusgeliehenBIS = AusleihenBIS;
+            
             Motorrad.Verfuegbar = false;
+            Motorrad.AusgeliehenUM = DateTime.Now;
             Motorrad.Kundenname = User.Identity.Name;
+
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

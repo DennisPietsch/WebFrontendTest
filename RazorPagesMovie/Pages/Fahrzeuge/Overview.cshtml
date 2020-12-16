@@ -7,22 +7,23 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].ID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.fahrzeugliste[0].Hersteller)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.fahrzeugliste[0].Preis)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Leistung)
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Kundenname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Bauhjahr)
+                @Html.DisplayNameFor(model => model.fahrzeugliste[0].AusgeliehenBIS)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-
 
         @foreach (var item in Model.fahrzeugliste)
          {
@@ -42,7 +43,7 @@
                         @Html.DisplayFor(modelItem => item.Kundenname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AusleihenBIS)
+                        @Html.DisplayFor(modelItem => item.AusgeliehenBIS)
                     </td>
                 </tr>
              }

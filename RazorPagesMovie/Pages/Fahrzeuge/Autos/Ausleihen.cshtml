@@ -4,17 +4,19 @@
     ViewData["Title"] = "Ausleihen";
 }
 
-<h1>Test</h1>
+<h1>Ausleihen</h1>
 
 <div class="row">
     <div class="col-md-4">
         <form method="post">
+            <p>Aktuelle Zeit: </p>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Ausleihzeit" class="control-label"></label>
-                <input asp-for="Ausleihzeit" class="form-control" />
-                <span asp-validation-for="Ausleihzeit" class="text-danger"></span>
-                <label hidden asp-for="ID" class="control-label"></label>
+                <label>
+                    <label asp-for="AusleihenBIS" class="control-label"></label>
+                    <input asp-for="AusleihenBIS" class="form-control" type="time" />
+                    <span asp-validation-for="AusleihenBIS" class="text-danger"></span>
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Ausleihen" class="btn btn-primary" />

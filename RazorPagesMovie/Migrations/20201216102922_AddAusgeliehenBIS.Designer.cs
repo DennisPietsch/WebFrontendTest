@@ -10,8 +10,8 @@ using RazorPagesMovie.Models;
 namespace RazorPagesMovie.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20201215134754_AusleihenBIS")]
-    partial class AusleihenBIS
+    [Migration("20201216102922_AddAusgeliehenBIS")]
+    partial class AddAusgeliehenBIS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,9 +233,6 @@ namespace RazorPagesMovie.Migrations
 
                     b.Property<DateTime>("AusgeliehenUM")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Ausleihzeit")
-                        .HasColumnType("int");
 
                     b.Property<int>("Bauhjahr")
                         .HasColumnType("int");

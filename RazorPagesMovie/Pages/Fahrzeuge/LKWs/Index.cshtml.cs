@@ -45,11 +45,12 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.LKWs
 
             foreach (var fahrzeug in LKW)
             {
-                if (fahrzeug.AusgeliehenUM.AddMinutes(fahrzeug.Ausleihzeit) <= DateTime.Now)
+                if (fahrzeug.AusgeliehenBIS <= DateTime.Now)
                 {
                     fahrzeug.Verfuegbar = true;
                     fahrzeug.Kundenname = null;
-
+                    fahrzeug.AusgeliehenBIS = new DateTime();
+                    fahrzeug.AusgeliehenUM = new DateTime();
                     await _context.SaveChangesAsync();
                 }
             }

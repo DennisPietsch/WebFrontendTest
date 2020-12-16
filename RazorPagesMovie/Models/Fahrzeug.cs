@@ -34,10 +34,8 @@ namespace RazorPagesMovie.Models
 
         public bool Verfuegbar { get; set; }
 
-        public int Ausleihzeit { get; set; }
-
         public DateTime AusgeliehenUM { get; set; }
 
-        public DateTime AusleihenBIS { get; set; }
+        public DateTime AusgeliehenBIS { get; set; }
     }
 }

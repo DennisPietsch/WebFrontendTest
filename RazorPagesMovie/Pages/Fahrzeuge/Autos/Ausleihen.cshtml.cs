@@ -41,7 +41,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
         [BindProperty]
         public int ID { get; set; }
         [BindProperty]
-        public int Ausleihzeit { get; set; }
+        public DateTime AusleihenBIS { get; set; }
  
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -54,10 +54,10 @@ namespace RazorPagesMovie.Pages.Fahrzeuge.Autos
 
             Auto = await _context.Auto.FirstOrDefaultAsync(m => m.ID == ID);
 
+            Auto.AusgeliehenBIS = AusleihenBIS;
+
             Auto.Verfuegbar = false;
             Auto.AusgeliehenUM = DateTime.Now;
-            Auto.AusleihenBIS = Auto.AusgeliehenUM.AddMinutes(Auto.Ausleihzeit);
-            Auto.Ausleihzeit = Ausleihzeit;
             Auto.Kundenname = User.Identity.Name;
 
             await _context.SaveChangesAsync();

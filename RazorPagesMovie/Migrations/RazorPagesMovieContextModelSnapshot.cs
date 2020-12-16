@@ -232,9 +232,6 @@ namespace RazorPagesMovie.Migrations
                     b.Property<DateTime>("AusgeliehenUM")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Ausleihzeit")
-                        .HasColumnType("int");
-
                     b.Property<int>("Bauhjahr")
                         .HasColumnType("int");
 

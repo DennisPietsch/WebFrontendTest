@@ -24,14 +24,8 @@
     <Compile Include="Migrations\20201110090147_FahrzeugVariable.Designer.cs" />
     <Compile Include="Migrations\20201110090340_FahrzeugVariable2.cs" />
     <Compile Include="Migrations\20201110090340_FahrzeugVariable2.Designer.cs" />
-    <Compile Include="Migrations\20201215134003_Ausleihen.cs" />
-    <Compile Include="Migrations\20201215134003_Ausleihen.Designer.cs" />
-    <Compile Include="Migrations\20201215134211_Ausleihenfertig.cs" />
-    <Compile Include="Migrations\20201215134211_Ausleihenfertig.Designer.cs" />
-    <Compile Include="Migrations\20201215134536_fsadhjkfldsa.cs" />
-    <Compile Include="Migrations\20201215134536_fsadhjkfldsa.Designer.cs" />
-    <Compile Include="Migrations\20201215134754_AusleihenBIS.cs" />
-    <Compile Include="Migrations\20201215134754_AusleihenBIS.Designer.cs" />
+    <Compile Include="Migrations\20201216102922_AddAusgeliehenBIS.cs" />
+    <Compile Include="Migrations\20201216102922_AddAusgeliehenBIS.Designer.cs" />
     <Compile Include="Migrations\RazorPagesMovieContextModelSnapshot.cs" />
   </ItemGroup>
 
