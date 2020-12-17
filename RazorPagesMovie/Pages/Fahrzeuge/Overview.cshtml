@@ -3,32 +3,37 @@
 @{
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Hersteller)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Preis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].Kundenname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fahrzeugliste[0].AusgeliehenBIS)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+@if (Model.kundenfahrzeuge == null)
+{
+    <h2>Sie haben keine ausgeliehenen Fahrzeuge</h2>
+}
 
-        @foreach (var item in Model.fahrzeugliste)
-         {
-            @if (item.Verfuegbar == false)
-             {
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Hersteller)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Preis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Kundenname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].AusgeliehenBIS)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.kundenfahrzeuge)
+            {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.ID)
@@ -46,8 +51,7 @@
                         @Html.DisplayFor(modelItem => item.AusgeliehenBIS)
                     </td>
                 </tr>
-             }
-         }
-
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
+}

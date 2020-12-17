@@ -28,9 +28,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Fahrzeuge/Index">Fahrzeuge</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Kunden/Index">Kunden</a>
-                        </li>
+
+                        @if (User.Identity.Name == "admin@test.com")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Kunden/Index">Kunden</a>
+                            </li>
+                        }
+
+                        @if (User.Identity.Name != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Fahrzeuge/Overview">Meine Fahrzeuge</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
