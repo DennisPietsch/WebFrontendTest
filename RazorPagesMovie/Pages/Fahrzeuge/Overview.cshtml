@@ -1,9 +1,9 @@
-﻿@page
+﻿@page   
 @model RazorPagesMovie.Pages.Fahrzeuge.OverviewModel
 @{
 }
 
-@if (Model.kundenfahrzeuge == null)
+@if (Model.kundenfahrzeuge.Count == 0)
 {
     <h2>Sie haben keine ausgeliehenen Fahrzeuge</h2>
 }
@@ -20,7 +20,7 @@ else
                     @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Hersteller)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Preis)
+                    @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Gesamtpreis)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.kundenfahrzeuge[0].Kundenname)
@@ -30,7 +30,7 @@ else
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
 
             @foreach (var item in Model.kundenfahrzeuge)
             {
@@ -42,7 +42,7 @@ else
                         @Html.DisplayFor(modelItem => item.Hersteller)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Preis)
+                        @Html.DisplayFor(modelItem => item.Gesamtpreis)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Kundenname)

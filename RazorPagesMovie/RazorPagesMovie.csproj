@@ -26,6 +26,8 @@
     <Compile Include="Migrations\20201110090340_FahrzeugVariable2.Designer.cs" />
     <Compile Include="Migrations\20201216102922_AddAusgeliehenBIS.cs" />
     <Compile Include="Migrations\20201216102922_AddAusgeliehenBIS.Designer.cs" />
+    <Compile Include="Migrations\20210104102922_Gesamtpreis.cs" />
+    <Compile Include="Migrations\20210104102922_Gesamtpreis.Designer.cs" />
     <Compile Include="Migrations\RazorPagesMovieContextModelSnapshot.cs" />
   </ItemGroup>
 

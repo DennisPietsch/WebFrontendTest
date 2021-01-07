@@ -37,5 +37,7 @@ namespace RazorPagesMovie.Models
         public DateTime AusgeliehenUM { get; set; }
 
         public DateTime AusgeliehenBIS { get; set; }
+
+        public decimal Gesamtpreis { get; set; }
     }
 }

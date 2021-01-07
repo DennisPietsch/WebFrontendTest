@@ -23,15 +23,24 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
         public IList<Fahrzeug> fahrzeugliste { get; set; }
         public IList<Fahrzeug> kundenfahrzeuge { get; set; }
 
+        public decimal gesamtausleihzeit { get; set; }
+
         public async Task OnGetAsync()
         {
             fahrzeugliste = await _context.Fahrzeug.ToListAsync();
 
+            kundenfahrzeuge = new List<Fahrzeug>();
+            
             foreach (var item in fahrzeugliste)
             {
                 if (item.Verfuegbar == false || item.Kundenname == User.Identity.Name)
                 {
-                    kundenfahrzeuge.Add(item);
+                    gesamtausleihzeit = Convert.ToDecimal(item.AusgeliehenUM - item.AusgeliehenBIS);
+                    item.Gesamtpreis = item.Preis * gesamtausleihzeit;
+
+                    kundenfahrzeuge.Add(item); 
+
+                    gesamtausleihzeit = 0;
                 }
             }
     
