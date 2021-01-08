@@ -23,7 +23,7 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
         public IList<Fahrzeug> fahrzeugliste { get; set; }
         public IList<Fahrzeug> kundenfahrzeuge { get; set; }
 
-        public decimal gesamtausleihzeit { get; set; }
+        public double gesamtausleihzeit { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -33,12 +33,15 @@ namespace RazorPagesMovie.Pages.Fahrzeuge
             
             foreach (var item in fahrzeugliste)
             {
-                if (item.Verfuegbar == false || item.Kundenname == User.Identity.Name)
+                if (item.Verfuegbar == false && item.Kundenname == User.Identity.Name)
                 {
-                    gesamtausleihzeit = Convert.ToDecimal(item.AusgeliehenUM - item.AusgeliehenBIS);
-                    item.Gesamtpreis = item.Preis * gesamtausleihzeit;
+                    var dauer = item.AusgeliehenBIS - item.AusgeliehenUM;
 
-                    kundenfahrzeuge.Add(item); 
+                    gesamtausleihzeit = dauer.TotalHours;
+
+                    item.Gesamtpreis = item.Preis * (decimal) gesamtausleihzeit;
+
+                    kundenfahrzeuge.Add(item);
 
                     gesamtausleihzeit = 0;
                 }
