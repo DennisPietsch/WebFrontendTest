@@ -37,7 +37,7 @@ namespace RazorPagesMovie.Areas.Identity.Pages.Account
         {
             _context = context;
             _userManager = userManager;
-            _signInManager = signInManager;
+            _signhttps://media1.giphy.com/media/tUKMeUhzcwrRu/giphy_s.gif?cid=de9bf95ebeskhtf2jsiczj7qvpdq1ow0e28nk9ahtvod1rbl&rid=giphy.gifInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
         }
