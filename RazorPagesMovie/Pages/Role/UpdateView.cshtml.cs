@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorPagesMovie.Pages
+namespace RazorPagesMovie.Pages.Role
 {
-    public class RoleModel : PageModel
+    public class UpdateViewModel : PageModel
     {
         public void OnGet()
         {

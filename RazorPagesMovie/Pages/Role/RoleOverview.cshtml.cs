@@ -14,18 +14,17 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using RazorPagesMovie.Data;
 using RazorPagesMovie.Models;
 using RazorPagesMovie.Authorization;
-
-
 namespace RazorPagesMovie.Pages.Role
 {
-    public class CreateModel : DI_BasePageModel
+    public class RoleOverviewModel : DI_BasePageModel
     {
-        public CreateModel (
+        public RoleOverviewModel(
             AuthenticationContext context,
             IAuthorizationService authorizationService,
             UserManager<IdentityUser> userManager)
-            :base (context, authorizationService, userManager)
-        { }
+            : base(context, authorizationService, userManager)
+        {
+        }
 
         public IList<IdentityUser> UserList { get; set; }
 

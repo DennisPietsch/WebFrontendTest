@@ -32,5 +32,7 @@ namespace RazorPagesMovie.Models
         public DbSet<RazorPagesMovie.Models.LKW> LKW { get; set; }
 
         public DbSet<RazorPagesMovie.Models.Motorrad> Motorrad { get; set; }
+
+
     }
 }
